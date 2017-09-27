@@ -33,14 +33,12 @@ import envterpolate from `envterpolate`
 const packageJson = envterpolate.readFile('package.json', '.env')
 console.log(packageJson)
 /**
-```js
-packageJson = {
+{
   // ...
   "yourPluginConfig": {
     cliArgs: "--save --password (|-|U(|< |\|0rr15"
   }
   // ...
 }
-
 **/
 ```
