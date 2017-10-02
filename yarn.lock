@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@brycemarshall/string-format@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@brycemarshall/string-format/-/string-format-1.0.2.tgz#990598e1436a80f7f68c9ded827a57e5f44370f3"
+
 "@semantic-release/commit-analyzer@^3.0.1":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-3.0.4.tgz#040bd2b99909f5671063be0c68fd782fd4543997"
@@ -44,7 +48,13 @@
     lodash "^4.17.4"
     pify "^3.0.0"
 
-"@types/fs-extra@^4.0.0":
+"@types/dotenv@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-4.0.1.tgz#a0db2a2d25b5c01ff387f07c4f1e002d592873e8"
+  dependencies:
+    "@types/node" "*"
+
+"@types/fs-extra@^4.0.0", "@types/fs-extra@^4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-4.0.2.tgz#7b9b1bbf85962cbe029b5a83c9b530d7c75af3ba"
   dependencies:
@@ -77,7 +87,7 @@
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.0.28.tgz#44ba754e9fa51432583e8eb30a7c4dd249b52faa"
 
-"@types/minimatch@*":
+"@types/minimatch@*", "@types/minimatch@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.1.tgz#b683eb60be358304ef146f5775db4c0e3696a550"
 
@@ -752,15 +762,15 @@ content-type-parser@^1.0.1:
   resolved "https://registry.yarnpkg.com/content-type-parser/-/content-type-parser-1.0.1.tgz#c3e56988c53c65127fb46d4032a3a900246fdc94"
 
 conventional-changelog-angular@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-1.5.0.tgz#50b2d45008448455fdf67e06ea01972fbd08182a"
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-1.5.1.tgz#974e73aa1c39c392e4364f2952bd9a62904e9ea3"
   dependencies:
     compare-func "^1.3.1"
     q "^1.4.1"
 
 conventional-changelog-core@^1.9.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-core/-/conventional-changelog-core-1.9.1.tgz#ddf767c405850dfc8df31726c80fa1a6a10bdc7b"
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-core/-/conventional-changelog-core-1.9.2.tgz#a09b6b959161671ff45b93cc9efb0444e7c845c0"
   dependencies:
     conventional-changelog-writer "^2.0.1"
     conventional-commits-parser "^2.0.0"
@@ -768,7 +778,7 @@ conventional-changelog-core@^1.9.0:
     get-pkg-repo "^1.0.0"
     git-raw-commits "^1.2.0"
     git-remote-origin-url "^2.0.0"
-    git-semver-tags "^1.2.1"
+    git-semver-tags "^1.2.2"
     lodash "^4.0.0"
     normalize-package-data "^2.3.5"
     q "^1.4.1"
@@ -840,14 +850,14 @@ cosmiconfig@^1.1.0:
     require-from-string "^1.1.0"
 
 coveralls@^2.13.1:
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/coveralls/-/coveralls-2.13.2.tgz#eedc426e08271ab67e93e7c5cb3eb99e2b0ca466"
+  version "2.13.3"
+  resolved "https://registry.yarnpkg.com/coveralls/-/coveralls-2.13.3.tgz#9ad7c2ae527417f361e8b626483f48ee92dd2bc7"
   dependencies:
-    js-yaml "^3.6.1"
-    lcov-parse "^0.0.10"
-    log-driver "^1.2.5"
-    minimist "^1.2.0"
-    request "^2.79.0"
+    js-yaml "3.6.1"
+    lcov-parse "0.0.10"
+    log-driver "1.2.5"
+    minimist "1.2.0"
+    request "2.79.0"
 
 cross-env@^5.0.1:
   version "5.0.5"
@@ -1017,6 +1027,10 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -1053,6 +1067,10 @@ escodegen@^1.6.1:
     optionator "^0.8.1"
   optionalDependencies:
     source-map "~0.5.6"
+
+esprima@^2.6.0:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
 esprima@^3.1.3:
   version "3.1.3"
@@ -1324,7 +1342,7 @@ fs-extra@^1.0.0:
     jsonfile "^2.1.0"
     klaw "^1.0.0"
 
-fs-extra@^4.0.0:
+fs-extra@^4.0.0, fs-extra@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.2.tgz#f91704c53d1b461f893452b0c307d9997647ab6b"
   dependencies:
@@ -1446,9 +1464,9 @@ git-remote-origin-url@^2.0.0:
     gitconfiglocal "^1.0.0"
     pify "^2.3.0"
 
-git-semver-tags@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/git-semver-tags/-/git-semver-tags-1.2.1.tgz#6ccd2a52e735b736748dc762444fcd9588e27490"
+git-semver-tags@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/git-semver-tags/-/git-semver-tags-1.2.2.tgz#a2139be1bf6e337e125f3eb8bb8fc6f5d4d6445f"
   dependencies:
     meow "^3.3.0"
     semver "^5.0.1"
@@ -2224,7 +2242,14 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
-js-yaml@^3.4.3, js-yaml@^3.6.1, js-yaml@^3.7.0:
+js-yaml@3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.6.1.tgz#6e5fe67d8b205ce4d22fad05b7781e8dadcc4b30"
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^2.6.0"
+
+js-yaml@^3.4.3, js-yaml@^3.7.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
   dependencies:
@@ -2346,7 +2371,7 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lcov-parse@^0.0.10:
+lcov-parse@0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/lcov-parse/-/lcov-parse-0.0.10.tgz#1b0b8ff9ac9c7889250582b70b71315d9da6d9a3"
 
@@ -2549,7 +2574,7 @@ lodash@~1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.3.1.tgz#a4663b53686b895ff074e2ba504dfb76a8e2b770"
 
-log-driver@^1.2.5:
+log-driver@1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/log-driver/-/log-driver-1.2.5.tgz#7ae4ec257302fd790d557cb10c97100d857b0056"
 
@@ -3120,8 +3145,8 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
 prettier@^1.4.4:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.7.2.tgz#81371e64018aafc69cf1031956c70e029339f54e"
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.7.3.tgz#8e6974725273914b1c47439959dd3d3ba53664b6"
 
 pretty-format@^21.2.1:
   version "21.2.1"
@@ -3176,6 +3201,10 @@ q@^1.4.1:
 qs@~6.2.0:
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.3.tgz#1cfcb25c10a9b2b483053ff39f5dfc9233908cfe"
+
+qs@~6.3.0:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.2.tgz#e75bd5f6e268122a2a0e0bda630b2550c166502c"
 
 qs@~6.4.0:
   version "6.4.0"
@@ -3308,6 +3337,31 @@ replace-in-file@^3.0.0-beta.2:
     chalk "^2.1.0"
     glob "^7.1.2"
     yargs "^8.0.2"
+
+request@2.79.0:
+  version "2.79.0"
+  resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
+  dependencies:
+    aws-sign2 "~0.6.0"
+    aws4 "^1.2.1"
+    caseless "~0.11.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.0"
+    forever-agent "~0.6.1"
+    form-data "~2.1.1"
+    har-validator "~2.0.6"
+    hawk "~3.1.3"
+    http-signature "~1.1.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.7"
+    oauth-sign "~0.8.1"
+    qs "~6.3.0"
+    stringstream "~0.0.4"
+    tough-cookie "~2.3.0"
+    tunnel-agent "~0.4.1"
+    uuid "^3.0.0"
 
 request@2.81.0:
   version "2.81.0"
@@ -4041,8 +4095,8 @@ tsutils@^1.4.0:
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
 
 tsutils@^2.8.1:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.9.0.tgz#7e1537b556bab6872fa7e6485dff45b076d5533d"
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.10.0.tgz#ae94511df2656eb06e4424056fba5c388887040c"
   dependencies:
     tslib "^1.7.1"
 
