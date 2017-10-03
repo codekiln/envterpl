@@ -1,8 +1,11 @@
 import {
   globPathMatcher,
+  interpolateFile,
+  interpolateStringLeafNodes,
   matchedLeafInterpolator,
   stringProcessingTraverser
 } from "../src/envterpolate"
+import { resolve } from "path"
 
 describe("matchedLeafInterpolator", () => {
   const dict = {
@@ -84,7 +87,7 @@ describe("stringProcessingTraverser", () => {
     const expectedLeaves: string[] = ["val1", "val2", "val3", "val4", "val5"]
     let visitedLeaves: string[] = []
     const visitor = (key: string, val: string): string => {
-      console.log(`visited key ${key} and val ${val}`)
+      // console.log(`visited key ${key} and val ${val}`)
       visitedLeaves.push(val)
       return val
     }
@@ -101,5 +104,55 @@ describe("stringProcessingTraverser", () => {
     }
     stringProcessingTraverser(obj, visitor)
     expect(visitedLeaves).toEqual(expectedLeaves)
+  })
+})
+
+describe("interpolateStringLeafNodes", () => {
+  const sampleFunc = function() {
+    return ""
+  }
+  const inputObject = {
+    jamesBond: "{bond} James {bond}",
+    othello: "{othello}, and then {othello}.",
+    richardIII: "{richardIII} {richardIII} my kingdom for {richardIII}",
+    isNotUsed: null,
+    isAFunc: sampleFunc
+  }
+  const interpolationContext = {
+    bond: "Bond.",
+    othello: "put out the light",
+    richardIII: "a horse!"
+  }
+  const expectedOutput = {
+    jamesBond: "Bond. James Bond.",
+    othello: "put out the light, and then put out the light.",
+    richardIII: "a horse! a horse! my kingdom for a horse!",
+    isNotUsed: null,
+    isAFunc: sampleFunc
+  }
+
+  it("interpolates string leaf nodes", () => {
+    const interpolatedObj = interpolateStringLeafNodes(
+      inputObject,
+      interpolationContext
+    )
+    expect(interpolatedObj).toEqual(expectedOutput)
+  })
+})
+
+describe("interpolateFile", () => {
+  const expectedPoem = {
+    roses: "are red",
+    violets: "are blue",
+    sugar: "is sweet",
+    andSo: "are YOU"
+  }
+
+  it("interpolates .env files", () => {
+    const envFilePath = resolve(__dirname, "roses.env")
+    const packageJsonPath = resolve(__dirname, "test.package.env")
+    interpolateFile(packageJsonPath, envFilePath).then(packageJsonResult => {
+      expect(packageJsonResult["poem"]).toEqual(expectedPoem)
+    })
   })
 })

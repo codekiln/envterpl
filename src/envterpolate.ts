@@ -59,25 +59,16 @@ export function stringProcessingTraverser(
   return obj
 }
 
-export function interpolateStringLeafNodes(
-  obj: object,
-  dict: object,
-  stringLeafNodeInterpolator: IStringLeafNodeInterpolator = matchedLeafInterpolator
-): object {
-  return stringProcessingTraverser(obj, stringLeafNodeInterpolator(dict))
+export function interpolateStringLeafNodes(obj: object, dict: object): object {
+  return stringProcessingTraverser(obj, matchedLeafInterpolator(dict))
 }
 
 export async function interpolateFile(
   pathToFileToInterpolate: string,
-  pathToDotEnvFile: string,
-  stringNodeProcessor: IStringLeafNodeInterpolator = matchedLeafInterpolator
+  pathToDotEnvFile: string
 ) {
   const fileToInterpolatePromise = readFile(pathToFileToInterpolate)
   const varsToInterpolate = dotenvParse(pathToDotEnvFile)
   const fileToInterpolate = await fileToInterpolatePromise
-  return interpolateStringLeafNodes(
-    fileToInterpolate,
-    varsToInterpolate,
-    stringNodeProcessor
-  )
+  return interpolateStringLeafNodes(fileToInterpolate, varsToInterpolate)
 }
