@@ -56,12 +56,14 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
     "mapCoverage": true,
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "jsx",
+      "json"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
