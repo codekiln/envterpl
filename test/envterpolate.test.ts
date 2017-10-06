@@ -150,9 +150,11 @@ describe("interpolateFile", () => {
 
   it("interpolates .env files", () => {
     const envFilePath = resolve(__dirname, "roses.env")
-    const packageJsonPath = resolve(__dirname, "test.package.env")
-    interpolateFile(packageJsonPath, envFilePath).then(packageJsonResult => {
-      expect(packageJsonResult["poem"]).toEqual(expectedPoem)
-    })
+    const packageJsonPath = resolve(__dirname, "test.package.json")
+    interpolateFile(packageJsonPath, envFilePath)
+      .then(packageJsonResult => {
+        expect(packageJsonResult["poem"]).toEqual(expectedPoem)
+      })
+      .catch(msg => console.log("rejected: ", msg))
   })
 })
