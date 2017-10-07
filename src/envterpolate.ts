@@ -1,4 +1,4 @@
-import { readFile, readJSON } from "fs-extra"
+import fs from "fs-extra"
 import { parse as dotenvParse } from "dotenv"
 import { stringFormat } from "@brycemarshall/string-format"
 import minimatch from "minimatch"
@@ -68,10 +68,10 @@ export async function interpolateJson(
   pathToFileToInterpolate: string,
   pathToDotEnvFile: string
 ) {
-  const fileToInterpolatePromise = readJSON(pathToFileToInterpolate).catch(
-    err => err
-  )
-  const dotEnvfile = await readFile(pathToDotEnvFile).catch(err => err)
+  const fileToInterpolatePromise = fs
+    .readJSON(pathToFileToInterpolate)
+    .catch(err => err)
+  const dotEnvfile = await fs.readFile(pathToDotEnvFile).catch(err => err)
   const varsToInterpolate = dotenvParse(dotEnvfile)
   const fileToInterpolate = await fileToInterpolatePromise
   return interpolateStringLeafNodes(fileToInterpolate, varsToInterpolate)
