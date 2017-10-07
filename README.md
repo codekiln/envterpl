@@ -33,9 +33,9 @@ packageJson = {
 
 ... Then you can use `envterpolate` to read the file with the dotenv environment variables expanded:
 ```js
-import envterpolate from 'envterpolate';
+import {interpolateJson} from 'envterpolate';
 
-const packageJson = envterpolate.readFile('package.json', '.env')
+const packageJson = interpolateJson('package.json', '.env')
 console.log(packageJson)
 /**
 {
