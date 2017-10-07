@@ -1,6 +1,6 @@
 import {
   globPathMatcher,
-  interpolateFile,
+  interpolateJson,
   interpolateStringLeafNodes,
   matchedLeafInterpolator,
   stringProcessingTraverser
@@ -140,7 +140,7 @@ describe("interpolateStringLeafNodes", () => {
   })
 })
 
-describe("interpolateFile", () => {
+describe("interpolateJson", () => {
   const expectedPoem = {
     roses: "are red",
     violets: "are blue",
@@ -151,10 +151,37 @@ describe("interpolateFile", () => {
   it("interpolates .env files", () => {
     const envFilePath = resolve(__dirname, "roses.env")
     const packageJsonPath = resolve(__dirname, "test.package.json")
-    interpolateFile(packageJsonPath, envFilePath)
+    interpolateJson(packageJsonPath, envFilePath)
       .then(packageJsonResult => {
         expect(packageJsonResult["poem"]).toEqual(expectedPoem)
       })
       .catch(msg => console.log("rejected: ", msg))
+  })
+
+  it("notifies when given invalid json", () => {
+    expect.assertions(1)
+    const envFilePath = resolve(__dirname, "roses.env")
+    const packageJsonPath = resolve(__dirname, "invalid.package.json")
+    return interpolateJson(packageJsonPath, envFilePath).catch(msg =>
+      expect(msg).toContain("SyntaxError")
+    )
+  })
+
+  it("notifies when given a nonexistent json file", () => {
+    const envFilePath = resolve(__dirname, "roses.env")
+    const packageJsonPath = resolve(__dirname, "should.not.exist.json")
+    return interpolateJson(packageJsonPath, envFilePath).catch(err => {
+      expect(err).toContain("ENOENT")
+      expect(err).toContain(packageJsonPath)
+    })
+  })
+
+  it("notifies when given a nonexistent dotenv file", () => {
+    const envFilePath = resolve(__dirname, "should.not.exist.env")
+    const packageJsonPath = resolve(__dirname, "test.package.json")
+    return interpolateJson(packageJsonPath, envFilePath).catch(err => {
+      expect(err).toContain("ENOENT")
+      expect(err).toContain(envFilePath)
+    })
   })
 })

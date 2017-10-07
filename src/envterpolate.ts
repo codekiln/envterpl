@@ -31,44 +31,47 @@ export const matchedLeafInterpolator = (
     ? stringFormat(stringLeafNode, dictionary)
     : stringLeafNode
 
+interface IMapper {
+  (key: string, val: any): any
+}
+
+function mapObj(obj: object, mapper: IMapper) {
+  return Object.assign(
+    {},
+    ...Object.entries(obj).map(([key, val]: [string, any]) => ({
+      [key]: mapper(key, val)
+    }))
+  )
+}
+
 export function stringProcessingTraverser(
   obj: any,
   stringLeafNodeProcessor: IStringLeafNodeProcessor,
   parentKeys: string[] = []
 ) {
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const val = obj[key]
-      if (val !== null) {
-        const visitedStringNodePath = [...parentKeys, key]
-        if (typeof val === "object") {
-          obj[key] = stringProcessingTraverser(
-            val,
-            stringLeafNodeProcessor,
-            visitedStringNodePath
-          )
-        } else if (typeof val === "string") {
-          obj[key] = stringLeafNodeProcessor(
-            visitedStringNodePath.join("."),
-            val as string
-          )
-        }
-      }
-    }
-  }
-  return obj
+  const mapper: IMapper = (key: string, val: any) =>
+    val === null
+      ? null
+      : typeof val === "string"
+        ? stringLeafNodeProcessor(parentKeys.join("."), val as string)
+        : typeof val === "object"
+          ? stringProcessingTraverser(val, stringLeafNodeProcessor, parentKeys)
+          : val
+  return mapObj(obj, mapper)
 }
 
 export function interpolateStringLeafNodes(obj: object, dict: object): object {
   return stringProcessingTraverser(obj, matchedLeafInterpolator(dict))
 }
 
-export async function interpolateFile(
+export async function interpolateJson(
   pathToFileToInterpolate: string,
   pathToDotEnvFile: string
 ) {
-  const fileToInterpolatePromise = readJSON(pathToFileToInterpolate)
-  const dotEnvfile = await readFile(pathToDotEnvFile)
+  const fileToInterpolatePromise = readJSON(pathToFileToInterpolate).catch(
+    err => err
+  )
+  const dotEnvfile = await readFile(pathToDotEnvFile).catch(err => err)
   const varsToInterpolate = dotenvParse(dotEnvfile)
   const fileToInterpolate = await fileToInterpolatePromise
   return interpolateStringLeafNodes(fileToInterpolate, varsToInterpolate)

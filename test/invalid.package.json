@@ -1,19 +1,2 @@
 {
-  "name": "envterpolate",
-  "version": "0.0.0",
-  "description": "Tiny Dotenv Environment Variable Interpolator",
-  "keywords": [
-    "dotenv"
-  ],
-  "author": "P. Myer Nore <ptr.nore@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/codekiln/envterpolate.git"
-  },
-  "poem": {
-    "roses": "are {ROSES}",
-    "violets": "are {VIOLETS}",
-    "sugar": "is {SUGAR}",
-    "andSo": "are YOU"
-  }
-}
+  "name": "envterpolate

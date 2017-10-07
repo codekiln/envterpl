@@ -5,7 +5,6 @@ Tiny Dotenv Environment Variable Interpolator
 [![Greenkeeper badge](https://badges.greenkeeper.io/alexjoverm/typescript-library-starter.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/alexjoverm/typescript-library-starter.svg)](https://travis-ci.org/alexjoverm/typescript-library-starter)
 [![Coveralls](https://img.shields.io/coveralls/alexjoverm/typescript-library-starter.svg)](https://coveralls.io/github/alexjoverm/typescript-library-starter)
-[![Dev Dependencies](https://david-dm.org/alexjoverm/typescript-library-starter/dev-status.svg)](https://david-dm.org/alexjoverm/typescript-library-starter?type=dev)
 
 This package implements a simple idea: interpolate strings taken from
 your npm package users, using variables they defined in their dotenv files. 
@@ -34,9 +33,9 @@ packageJson = {
 
 ... Then you can use `envterpolate` to read the file with the dotenv environment variables expanded:
 ```js
-import {interpolateFile} from 'envterpolate';
+import {interpolateJson} from 'envterpolate';
 
-const packageJson = interpolateFile('package.json', '.env')
+const packageJson = interpolateJson('package.json', '.env')
 console.log(packageJson)
 /**
 {
